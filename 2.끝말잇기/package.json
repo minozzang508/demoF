@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --hot"
   },
-  "author": "ZeroCho",
+  "author": "jay-z",
   "license": "ISC",
   "dependencies": {
     "react": "^16.8.6",

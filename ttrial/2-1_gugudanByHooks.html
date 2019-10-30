@@ -15,9 +15,15 @@
 </div>
 
 <script type="text/babel">
-    //'Hooks'는 함수 컴포넌트에 'setState'나 'ref'를 추가해준거!
+    //'Hooks'는 함수 컴포넌트(functional component)에 'setState'나 'ref'를 추가해준거!
     //'use' 추가된게 Hooks!!!!!
+    //코드 양이 확 줄어든다.
+    //but, state를 변경될 때마다 class와 달리 GuGuDan 함수가 매번 재실행된다.
+
+    //구조분해할당 (destructuring)
     const GuGuDan = () => {
+        console.log('GuGuDan start');
+        //state 관리..
         const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9));
         const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
         const [value, setValue] = React.useState('');
@@ -35,8 +41,10 @@
                 setValue('');
 
             } else {
-                setResult('정답 : ' + value);
+                setResult('땡 : ' + value);
+                setValue('');
             }
+            //DOM 에 접근
             inputRef.current.focus();
         };
 
@@ -44,9 +52,10 @@
           <React.Fragment>
             <div>{first} 곱하기 {second}는?</div>
             <form onSubmit={onSubmit}>
-                <input ref={onRefInput} onChange={onChangeInput} value={value}/>
+                <input ref={inputRef} onChange={onChangeInput} value={value}/>
+                <button type="submit" className="submitBtn">입력!</button>
             </form>
-            <div>result</div>
+            <div>{result}</div>
           </React.Fragment>
         );
     }

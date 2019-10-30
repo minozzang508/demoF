@@ -2,13 +2,13 @@ const path = require('path');
 
 module.exports = {
   name: 'word-relay-dev',
-  mode: 'development',
+  mode: 'development', //배포는 : production
   devtool: 'eval',
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   entry: {
-    app: './client',
+    app: './client', //client에서 wordRelay를 불러오기때문에 client만 입력해도 댄다.
   },
   module: {
     rules: [{
@@ -29,7 +29,7 @@ module.exports = {
   },
   plugins: [],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist'),  //__dirname : 현재 폴더
     filename: '[name].js',
     publicPath: '/dist',
   },

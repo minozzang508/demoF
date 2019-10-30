@@ -12,3 +12,6 @@
 1. 러닝 커브가 크다.
 2. Publishing 하는 사람들이 이해하기 힘들다.
 
+## BABEL / JSX
+- JS + XML : js 안에서 태그 직접 입력할 수 있도록 해주는 문법
+- BABEL : JSX안의 태그를 createElement를 통해 DOM 객체를 만들어줌

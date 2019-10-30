@@ -45,23 +45,29 @@
                 //     second : Math.ceil(Math.random() * 9),
                 //     //value : '',
                 // });
+
+                //setState의 parameter object에서 function으로 변경 : prev와 after을 변경
                 this.setState((prevState) => {
                     return {
                         result : '정답 : ' + prevState.value,
                         first : Math.ceil(Math.random() * 9),
                         second : Math.ceil(Math.random() * 9),
-                        value : '',
+                        value : ''
                     };
-                })
+                });
             } else {
-                this.setState({
-                    result : '땡',
-                    value : ''
+                this.setState((prevState) => {
+                    return {
+                        result : '땡',
+                        value : ''
+                    };
                 });
             }
             this.input.focus();
         };
 
+        // 1-9.ref : 값을 입력할 때마다 input에 focus를 하겠다.
+        input;
         onRefInput = (c) => {this.input = c;};
 
         render() {
@@ -87,7 +93,7 @@
 
 <script type="text/babel">
     //render 호출
-    ReactDOM.render(<div><GuGuDan/></div>, document.querySelector('#root'));
+    ReactDOM.render(<div><GuGuDan/><GuGuDan/><GuGuDan/></div>, document.querySelector('#root'));
 </script>
 
 
