@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title2</title>
+    <!-- 실제배포환경에서는 development -> production으로 변경-->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!--Javascript 최신 객체 method를 사용하려면 'babel-polyfill' 임포트 해야한다. -->
+</head>
+<body>
+<div id="root">
+
+</div>
+<div id="root2">
+
+</div>
+<script type="text/babel">
+    //babel로 react.createElment 안써도댐. (지저분하다.)
+    //React.createClass -> Class -> Hooks 으로 변화.
+    class LikeButton extends React.Component {
+        //LikeButton의 생성자
+        constructor(props) {
+            super(props);
+            //상태
+            this.state = {
+                liked: false,
+
+            };
+        }
+
+        //LikeButton을 어떻게 보여줄지 결정하는 함수
+        render() {
+            return <button
+                type="submit"
+                onClick={() => {
+                    this.setState({liked: !this.state.liked})
+                }}>{this.state.liked ? 'Liked' : 'Like'}</button>;
+            //JSX (JS + XML) 을 가능케 하는 babel을 import한다.
+
+            // 아래는 너무 복잡해서 위에처럼 변형되었다. 이를 가능케 하는게 line:9의 babel !!!!
+            // return e(
+            //     'button',                                       //tag type
+            //     {
+            //         onClick: () => {
+            //             console.log('clicked');
+            //             this.setState({liked : !this.state.liked});
+            //         },
+            //         type : 'submit'
+            //     },                                              //tag properties
+            //     this.state.liked === true ? 'Liked' : 'Like'    //text
+            // ); //<button> Like </button>
+        }
+    }
+
+</script>
+
+<script type="text/babel">
+    //render 호출
+    ReactDOM.render(<LikeButton/>, document.querySelector('#root'));
+
+    //lowerCase start : 태그
+    //UpperCase start : 리액트 컴포넌트
+    ReactDOM.render(<div>
+        <LikeButton />
+        <LikeButton />
+        <LikeButton />
+        <LikeButton />
+        <LikeButton />
+        <LikeButton />
+        <LikeButton />
+        <LikeButton />
+        <LikeButton />
+    </div>, document.querySelector('#root2'));
+    //지금까지는 지저분하고 원시적인 react 코딩.
+</script>
+
+
+</body>
+</html>

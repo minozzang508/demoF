@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8" />
+    <title>구구단</title>
+    <!-- 실제배포환경에서는 development -> production으로 변경-->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- Javascript 최신 객체 method를 사용하려면 'babel-polyfill' 임포트 해야한다. -->
+</head>
+<body>
+<div id="root">
+
+</div>
+
+<script type="text/babel">
+    //'Hooks'는 함수 컴포넌트(functional component)에 'setState'나 'ref'를 추가해준거!
+    //'use' 추가된게 Hooks!!!!!
+    //코드 양이 확 줄어든다.
+    //but, state를 변경될 때마다 class와 달리 GuGuDan 함수가 매번 재실행된다.
+
+    //구조분해할당 (destructuring)
+    const GuGuDan = () => {
+        console.log('GuGuDan start');
+        //state 관리..
+        const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9));
+        const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
+        const [value, setValue] = React.useState('');
+        const [result, setResult] = React.useState('');
+        const inputRef = React.useRef(null);
+
+        const onChangeInput = (e) => {setValue(e.target.value)};
+
+        const onSubmit = (e) => {
+            e.preventDefault();
+            if(parseInt(value) === first * second){
+                setResult('정답 : ' + value);
+                setFirst(Math.ceil(Math.random() * 9));
+                setSecond(Math.ceil(Math.random() * 9));
+                setValue('');
+
+            } else {
+                setResult('땡 : ' + value);
+                setValue('');
+            }
+            //DOM 에 접근
+            inputRef.current.focus();
+        };
+
+        return (
+          <React.Fragment>
+            <div>{first} 곱하기 {second}는?</div>
+            <form onSubmit={onSubmit}>
+                <input ref={inputRef} onChange={onChangeInput} value={value}/>
+                <button type="submit" className="submitBtn">입력!</button>
+            </form>
+            <div>{result}</div>
+          </React.Fragment>
+        );
+    }
+</script>
+
+<script type="text/babel">
+    //render 호출
+    ReactDOM.render(<div><GuGuDan/></div>, document.querySelector('#root'));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8" />
+    <title>구구단</title>
+    <!-- 실제배포환경에서는 development -> production으로 변경-->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- Javascript 최신 객체 method를 사용하려면 'babel-polyfill' 임포트 해야한다. -->
+</head>
+<body>
+<div id="root">
+
+</div>
+
+<script type="text/babel">
+    class GuGuDan extends React.Component {
+        // 실무에서는 'constructor'을 안쓰고 이런 방식을 훨씬 더 많이 쓴다.
+        state = {
+            first: Math.ceil(Math.random() * 9),
+            second: Math.ceil(Math.random() * 9),
+            value: '',
+            result: '',
+        };
+        // constructor(props) {
+        //     super(props);
+        //
+        //     this.state = {
+        //         first: Math.ceil(Math.random() * 9),
+        //         second: Math.ceil(Math.random() * 9),
+        //         value: '',
+        //         result: '',
+        //     };
+        // }
+
+        onChange = (e) => this.setState({value: e.target.value});
+
+        onSubmit = (e) => {
+            e.preventDefault();
+            if(parseInt(this.state.value) === this.state.first * this.state.second){
+                // this.setState({
+                //     result : '정답',
+                //     first : Math.ceil(Math.random() * 9),
+                //     second : Math.ceil(Math.random() * 9),
+                //     //value : '',
+                // });
+                this.setState((prevState) => {
+                    return {
+                        result : '정답 : ' + prevState.value,
+                        first : Math.ceil(Math.random() * 9),
+                        second : Math.ceil(Math.random() * 9),
+                        value : '',
+                    };
+                })
+            } else {
+                this.setState({
+                    result : '땡',
+                    value : ''
+                });
+            }
+            this.input.focus();
+        };
+
+        onRefInput = (c) => {this.input = c;};
+
+        render() {
+            // return <div></div>; 해도 됨.
+            // babel - tip : '{}'안에 javascript를 넣을 수 있다.
+            console.log('렌더링');
+            return (
+                //babel tool을 설치하면 <> ... </> 로 감싸도 된다. 0
+                <React.Fragment>
+                    <div>{this.state.first}곱하기{this.state.second}는?</div>
+                    <form onSubmit={this.onSubmit}>
+                        <input ref={this.onRefInput} type="number" value={this.state.value}
+                               onChange={this.onChange} />
+
+                        <button type="submit">입력!</button>
+                    </form>
+                    <div>{this.state.result}</div>
+                </React.Fragment>
+            );
+        }
+    }
+</script>
+
+<script type="text/babel">
+    //render 호출
+    ReactDOM.render(<div><GuGuDan/></div>, document.querySelector('#root'));
+</script>
+
+
+</body>
+</html>
