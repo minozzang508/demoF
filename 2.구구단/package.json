@@ -1,0 +1,17 @@
+{
+  "name": "gugudan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jay-z",
+  "license": "ISC",
+  "devDependencies": {
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
