@@ -1,0 +1,380 @@
+{
+  "restaurant": [
+    {
+      "id": 1,
+      "name": "스윗봉쥬르",
+      "address": "야탑 어딘가",
+      "phone": "010-3314-6318",
+      "openHour": 10,
+      "openMin": 30,
+      "closeHour": 18,
+      "closeMin": 30,
+      "description": "다양한 마카롱을 통해 마음을 전하세요."
+    },
+    {
+      "id": 2,
+      "name": "아이스크림걸 크림보이",
+      "address": "판교 어딘가",
+      "phone": "010-3314-6318",
+      "openHour": 10,
+      "openMin": 0,
+      "closeHour": 23,
+      "closeMin": 0,
+      "description": "맛있는 젤라또와 차를 만듭니다."
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "아이스크림",
+      "restaurantId": 2
+    },
+    {
+      "id": 2,
+      "name": "음료",
+      "restaurantId": 2
+    },
+    {
+      "id": 3,
+      "name": "마카롱",
+      "restaurantId": 1
+    },
+    {
+      "id": 4,
+      "name": "커피",
+      "restaurantId": 2
+    },
+    {
+      "id": 5,
+      "name": "베이커리",
+      "restaurantId": 2
+    },
+    {
+      "id": 6,
+      "name": "IceCream_Box",
+      "restaurantId": 2
+    }
+  ],
+  "menu": [
+    {
+      "id": 1,
+      "name": "레몬 마카롱",
+      "price": 2500,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 1,
+      "categoryId": 3,
+      "categoryName": "마카롱",
+      "discount": 10
+    },
+    {
+      "id": 2,
+      "name": "말차 마카롱",
+      "price": 2500,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 1,
+      "categoryId": 3,
+      "categoryName": "마카롱",
+      "discount": 30
+    },
+    {
+      "id": 3,
+      "name": "얼그레이 마카롱",
+      "price": 2500,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 1,
+      "categoryId": 3,
+      "categoryName": "마카롱",
+      "discount": 10
+    },
+    {
+      "id": 4,
+      "name": "와인 젤라또",
+      "price": 3900,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 2,
+      "categoryId": 1,
+      "categoryName": "아이스크림",
+      "discount": 15
+    },
+    {
+      "id": 5,
+      "name": "맥주 젤라또",
+      "price": 3900,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 2,
+      "categoryId": 1,
+      "categoryName": "아이스크림",
+      "discount": 10
+    },
+    {
+      "id": 6,
+      "name": "고추장 젤라또",
+      "price": 3900,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 2,
+      "categoryId": 1,
+      "categoryName": "아이스크림",
+      "discount": 30
+    },
+    {
+      "id": 7,
+      "name": "베리메리마테",
+      "price": 3500,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 2,
+      "categoryId": 2,
+      "categoryName": "음료"
+    },
+    {
+      "id": 8,
+      "name": "블루밍 오렌지",
+      "price": 3500,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 2,
+      "categoryId": 2,
+      "categoryName": "음료"
+    },
+    {
+      "id": 9,
+      "name": "루이보스 레몬프레쉬",
+      "price": 3500,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 2,
+      "categoryId": 2,
+      "categoryName": "음료"
+    },
+    {
+      "id": 10,
+      "name": "Small Box",
+      "price": 16000,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 2,
+      "categoryId": 6,
+      "categoryName": "IceCream_Box"
+    },
+    {
+      "id": 11,
+      "name": "벨기에 와플",
+      "price": 2500,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 2,
+      "categoryId": 5,
+      "categoryName": "베이커리"
+    },
+    {
+      "id": 12,
+      "name": "카페라테",
+      "price": 4000,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "option": [
+        "Hot",
+        "Ice"
+      ],
+      "restaurantId": 2,
+      "categoryId": 4,
+      "categoryName": "커피"
+    },
+    {
+      "id": 13,
+      "name": "아메리카노",
+      "price": 3500,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "option": [
+        "Hot",
+        "Ice"
+      ],
+      "restaurantId": 2,
+      "categoryId": 4,
+      "categoryName": "커피"
+    },
+    {
+      "id": 14,
+      "name": "레몬 젤라또",
+      "price": 3900,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 2,
+      "categoryId": 1,
+      "categoryName": "아이스크림",
+      "discount": 30
+    },
+    {
+      "id": 15,
+      "name": "솔티크래커 젤라또",
+      "price": 3900,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 2,
+      "categoryId": 1,
+      "categoryName": "아이스크림",
+      "discount": 30
+    },
+    {
+      "id": 16,
+      "name": "쌀 젤라또",
+      "price": 3900,
+      "quantity": 0,
+      "img": "",
+      "delivery": [
+        "매장",
+        "1층",
+        "5층"
+      ],
+      "restaurantId": 2,
+      "categoryId": 1,
+      "categoryName": "아이스크림",
+      "discount": 30
+    }
+  ],
+  "paymentMethod": [
+    {
+      "id": 1,
+      "name": "토스"
+    },
+    {
+      "id": 2,
+      "name": "네이버"
+    },
+    {
+      "id": 3,
+      "name": "카카오"
+    },
+    {
+      "id": 4,
+      "name": "카드"
+    }
+  ],
+  "order": [
+    {
+      "title": "test",
+      "id": 1
+    },
+    {
+      "title": "test",
+      "id": 2
+    },
+    {
+      "seletedItems": [
+        {
+          "name": "레몬 젤라또",
+          "price": 3900,
+          "count": 1
+        }
+      ],
+      "selectedPaymentId": 1,
+      "agreement": false,
+      "id": 3
+    },
+    {
+      "seletedItems": [
+        {
+          "name": "고추장 젤라또",
+          "price": 3900,
+          "count": 1
+        }
+      ],
+      "selectedPaymentId": 3,
+      "agreement": false,
+      "id": 4
+    },
+    {
+      "seletedItems": [
+        {
+          "name": "고추장 젤라또",
+          "price": 3900,
+          "count": 5
+        }
+      ],
+      "selectedPaymentId": 2,
+      "agreement": false,
+      "id": 5
+    }
+  ]
+}

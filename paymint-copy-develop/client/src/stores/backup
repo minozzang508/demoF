@@ -1,0 +1,102 @@
+
+import { observable, action, computed } from 'mobx';
+import menuService from '../services/menuService';
+import MenuModel from '../models/menu';
+
+class MenuStore {
+    @observable selectedItems = [];
+    @observable menu =[];
+    @observable asyncState = '1'; // "pending" / "done" / "error"
+    @observable totalPrice=0;
+
+    @action
+    setAsyncState = (state) => {
+      this.asyncState = state;
+      
+    }// 3개의 state에 따라 페이지 렌더링 
+
+
+    @action setMenu = async (data) => {
+         this.menu = await data;
+        console.log(this.menu[0].name);
+      }
+    
+
+
+    @action
+    fetchMenu = async (id) => {
+      this.setAsyncState('pending') // loading bar로 보여지게 
+      try{
+          const res = await menuService.geMenu(id);
+         // console.log(res);
+         // Array 형태임 response가 따라서 MenuModel Array로 받아야함. 
+          if(!res) throw new Error('Data is empty');
+         
+         
+          // console.log((typeof(res)));
+          // console.log(res);
+
+          let data = Object.create(res);
+          this.setMenu(data);
+          /*
+             let data = Object.create(res).map(function(item){
+                          var rObj = {};
+                          rObj[obj.id] = obj.value;
+                          return rObj;
+                          }); // => 각 원소를 MenuModel로 만들까 하다가 관둠. 이유 1 : 그럴 필요가 없음. 단점 : Server에서 받아올 때 Validate가 안 됨 . 
+
+
+          */
+          // console.log(data);
+          // res 를 Object.create 를 이용해 객체 Array로 만듦. 
+        
+          
+          this.setAsyncState('done') // 완료. 
+       
+         
+          return true;
+      }catch(error){
+          this.setAsyncState('error');// error 페이지 렌더링
+          return false;
+      }
+     
+    }
+  
+    @action
+    put = (name, price) => {
+      const { number } = this.root.counter;
+      // 존재하는지 찾고
+      const exists = this.selectedItems.find(item => item.name === name);
+      if (!exists) {
+        // 존재하지 않는다면 새로 집어넣습니다.
+        this.selectedItems.push({
+          name,
+          price,
+          count: number,
+        });
+        return;
+      }
+      exists.count += number;
+    };
+  
+    @action
+    take = name => {
+      const itemToTake = this.selectedItems.find(item => item.name === name);
+      itemToTake.count--;
+      if (itemToTake.count === 0) {
+        // 갯수가 0 이면
+        this.selectedItems.remove(itemToTake); // 배열에서 제거처리합니다.
+      }
+    };
+  
+    @computed
+    get total() {
+      console.log('총합 계산...');
+      return this.selectedItems.reduce((previous, current) => {
+        return previous + current.price * current.count;
+      }, 0);
+    }
+  }
+  
+
+  export default MenuStore;
